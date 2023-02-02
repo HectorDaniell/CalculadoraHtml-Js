@@ -5,50 +5,30 @@ const btnSuma = document.getElementById("+");
 const btnResta = document.getElementById("-");
 const btnMulti = document.getElementById("x");
 const btnDivi = document.getElementById("/");
-btnSuma.addEventListener("click", suma)
-btnResta.addEventListener("click", resta)
-btnMulti.addEventListener("click", multi)
-btnDivi.addEventListener("click", divi)
-
-function suma(){
+btnSuma.addEventListener("click", function(){operacion(btnSuma.value)})
+btnResta.addEventListener("click",  function(){operacion(btnResta.value)})
+btnMulti.addEventListener("click", function(){operacion(btnMulti.value)})
+btnDivi.addEventListener("click", function(){operacion(btnDivi.value)})
+function operacion(signo){
     const ope1= parseFloat(operando1.value);
     const ope2 = parseFloat(operando2.value);
     if(!isNaN(ope1) && !isNaN(ope2)){
         let resultadoOper;
-        resultadoOper= ope1+ope2;
-        resultado.innerText = "Resultado = "+resultadoOper;
-    }
-    else
-    resultado.innerText ="Introduce numeros carajo!"
-}
-function resta(){
-    const ope1= parseFloat(operando1.value);
-    const ope2 = parseFloat(operando2.value);
-    if(!isNaN(ope1) && !isNaN(ope2)){
-        let resultadoOper;
-        resultadoOper= ope1-ope2;
-        resultado.innerText = "Resultado = "+resultadoOper;
-    }
-    else
-    resultado.innerText ="Introduce numeros carajo!"
-}
-function multi(){
-    const ope1= parseFloat(operando1.value);
-    const ope2 = parseFloat(operando2.value);
-    if(!isNaN(ope1) && !isNaN(ope2)){
-        let resultadoOper;
-        resultadoOper= ope1*ope2;
+        switch(signo){
+            case "+":
+                resultadoOper= ope1+ope2;
+                break;
+            case "-":
+                resultadoOper= ope1-ope2;
+                break;
+            case "x":
+                resultadoOper= ope1*ope2;
+                break;
+            case "/":
+                resultadoOper= ope1/ope2;
+                break;
+        }
         resultado.innerText = "Resultado = "+resultadoOper;
     }else
-    resultado.innerText ="Introduce numeros carajo!"
-}
-function divi(){
-    const ope1= parseFloat(operando1.value);
-    const ope2 = parseFloat(operando2.value);
-    if(!isNaN(ope1) && !isNaN(ope2)){
-        let resultadoOper;
-        resultadoOper= ope1/ope2;
-        resultado.innerText = "Resultado = "+resultadoOper;
-    }else
-    resultado.innerText ="Introduce numeros carajo!"
+    resultado.innerText ="Introduce numeros carajo!";
 }
